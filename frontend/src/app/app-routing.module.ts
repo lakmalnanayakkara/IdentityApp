@@ -19,6 +19,11 @@ const routes: Routes = [
         path: 'play',
         component: PlayComponent,
       },
+      {
+        path: 'admin',
+        loadChildren: () =>
+          import('./admin/admin.module').then((module) => module.AdminModule),
+      },
     ],
   },
   {
