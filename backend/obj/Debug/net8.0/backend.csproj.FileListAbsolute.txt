@@ -179,3 +179,4 @@ D:\Enhanzer\practice-project\backend\bin\Debug\net8.0\Google.Apis.Auth.dll
 D:\Enhanzer\practice-project\backend\bin\Debug\net8.0\Google.Apis.Core.dll
 D:\Enhanzer\practice-project\backend\bin\Debug\net8.0\System.Management.dll
 D:\Enhanzer\practice-project\backend\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+D:\Enhanzer\practice-project\backend\obj\Debug\net8.0\backend.sourcelink.json
