@@ -211,6 +211,10 @@ namespace backend.Controllers
         public async Task<ActionResult<UserDTO>> RefreshToken()
         {
             var user = await _userManager.FindByIdAsync(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (await _userManager.IsLockedOutAsync(user))
+            {
+                return Unauthorized("You have been locked out");
+            }
             return await CreateApplicationUserDto(user);
         }
 

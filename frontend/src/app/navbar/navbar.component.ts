@@ -8,6 +8,7 @@ import { AccountService } from '../account/account.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
+  collapsed = true;
   constructor(
     public accountService: AccountService,
     private cd: ChangeDetectorRef
@@ -21,5 +22,9 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.accountService.logOut();
+  }
+
+  toggleCollapsed() {
+    this.collapsed = !this.collapsed;
   }
 }

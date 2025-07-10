@@ -1,13 +1,13 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand">
-        <img src="../../assets/logo.png" alt="img" />
+      <a class="nav-brand">
+        <img src="../../assets/logo.png" class="me-3" alt="Logo" />
       </a>
-      <button class="navbar-toggler" type="button">
+      <button class="navbar-toggler" type="button" (click)="toggleCollapsed()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse">
+      <div class="collapse navbar-collapse" [ngClass]="{ collapse: collapsed }">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a
@@ -18,8 +18,8 @@
               >Home</a
             >
           </li>
-          <ng-container *ngIf="accountService.user$ | async"
-            ><li class="nav-item">
+          <ng-container *ngIf="accountService.user$ | async">
+            <li class="nav-item">
               <a class="nav-link" routerLink="/play" routerLinkActive="active"
                 >Play</a
               >
@@ -28,38 +28,42 @@
               <a class="nav-link" routerLink="/admin" routerLinkActive="active"
                 >Admin</a
               >
-            </li></ng-container
-          >
+            </li>
+          </ng-container>
         </ul>
+
         <ul class="navbar-nav" *ngIf="(accountService.user$ | async) === null">
           <li class="nav-item">
             <a
               class="btn btn-secondary mx-2"
               routerLink="/account/register"
               routerLinkActive="active"
-              >Create account</a
             >
+              Create account
+            </a>
           </li>
           <li class="nav-item">
             <a
               class="btn btn-secondary"
               routerLink="/account/login"
               routerLinkActive="active"
-              >Login</a
             >
+              Login
+            </a>
           </li>
         </ul>
+
         <div
           class="d-flex align-items-center"
           *ngIf="accountService.user$ | async as user"
         >
-          <a class="text-white" style="text-decoration: none; cursor: pointer"
-            >Hi
+          <a class="text-white" style="text-decoration: none; cursor: pointer">
+            Hi
             <span class="h3 text-warning">{{
               user.firstName | titlecase
-            }}</span></a
-          >
-          <a class="btn btn-secondary ms-2" (click)="logOut()">LogOut</a>
+            }}</span>
+          </a>
+          <a class="btn btn-secondary ms-2" (click)="logout()">Logout</a>
         </div>
       </div>
     </div>
