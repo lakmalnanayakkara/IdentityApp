@@ -127,8 +127,6 @@ export class LoginComponent {
         const accessToken = fbResult.authResponse.accessToken;
         const userId = fbResult.authResponse.userID;
 
-        console.log(fbResult);
-
         this.accountService
           .loginWithThirdParty(
             new LoginWithExternal(accessToken, userId, 'facebook')

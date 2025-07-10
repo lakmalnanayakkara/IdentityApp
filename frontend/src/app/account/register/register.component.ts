@@ -103,7 +103,7 @@ export class RegisterComponent implements OnInit {
     this.errorMessages = [];
     if (this.registerForm.valid) {
       this.accountService.register(this.registerForm.value).subscribe({
-        next: (response) => {
+        next: (response: any) => {
           this.sharedService.showNotification(
             true,
             response.value.title,

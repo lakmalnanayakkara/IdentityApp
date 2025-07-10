@@ -21,11 +21,13 @@ export class AppComponent implements OnInit {
         next: (_) => {},
         error: (error) => {
           this.accountService.logOut();
-          this.sharedService.showNotification(
-            false,
-            'Account blocked',
-            error.error
-          );
+          if (error.status === 401) {
+            this.sharedService.showNotification(
+              false,
+              'Account blocked',
+              error.error
+            );
+          }
         },
       });
     } else {

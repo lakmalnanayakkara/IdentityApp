@@ -150,7 +150,7 @@ export class AddEditMemberComponent {
   submit() {
     this.submitted = true;
     this.errorMessages = [];
-    console.log('ts hit');
+
     if (this.memberForm.valid) {
       this.adminService.addEditMember(this.memberForm.value).subscribe({
         next: (response: any) => {

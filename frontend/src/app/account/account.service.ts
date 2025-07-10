@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of, ReplaySubject, take, tap } from 'rxjs';
 import { UserRegister, UserLogin, User } from '../interface/user.interface';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { ConfirmEmail, ResetPassword } from '../interface/account.interface';
 import { RegWithExternal } from '../interface/regWithExternal';
@@ -28,7 +28,7 @@ export class AccountService {
     headers = headers.set('Authorization', 'Bearer ' + jwt);
 
     return this.http
-      .get<User>(`${environment.appUrl}/account/refresh-token`, {
+      .get<User>(`${environment.appUrl}account/refresh-token`, {
         headers,
       })
       .pipe(
@@ -44,14 +44,14 @@ export class AccountService {
     this.router.navigateByUrl('/');
   }
 
-  register(user: UserRegister): Observable<any> {
-    return this.http.post<User>(`${environment.appUrl}/account/register`, user);
+  register(user: UserRegister) {
+    return this.http.post(`${environment.appUrl}account/register`, user);
   }
 
   registerWithThirdParty(model: RegWithExternal) {
     return this.http
       .post<User>(
-        `${environment.appUrl}/account/register-with-third-party`,
+        `${environment.appUrl}account/register-with-third-party`,
         model
       )
       .pipe(
@@ -63,35 +63,35 @@ export class AccountService {
 
   confirmEmail(confirmEmail: ConfirmEmail) {
     return this.http.put(
-      `${environment.appUrl}/account/confirm-email`,
+      `${environment.appUrl}account/confirm-email`,
       confirmEmail
     );
   }
 
   resendEmailConfirmationLink(email: string) {
     return this.http.post(
-      `${environment.appUrl}/account/resend-email-confirmation-link/${email}`,
+      `${environment.appUrl}account/resend-email-confirmation-link/${email}`,
       {}
     );
   }
 
   resetPassword(resetPassword: ResetPassword) {
     return this.http.put(
-      `${environment.appUrl}/account/reset-password`,
+      `${environment.appUrl}account/reset-password`,
       resetPassword
     );
   }
 
   forgotUsernameOrPassword(email: string) {
     return this.http.post(
-      `${environment.appUrl}/account/forgot-username-or-password/${email}`,
+      `${environment.appUrl}account/forgot-username-or-password/${email}`,
       {}
     );
   }
 
   login(user: UserLogin): Observable<User> {
     return this.http
-      .post<User>(`${environment.appUrl}/account/login`, user)
+      .post<User>(`${environment.appUrl}account/login`, user)
       .pipe(
         tap((loggedUser: User) => {
           if (loggedUser) {
@@ -104,7 +104,7 @@ export class AccountService {
 
   loginWithThirdParty(model: LoginWithExternal) {
     return this.http
-      .post<User>(`${environment.appUrl}/account/login-with-third-party`, model)
+      .post<User>(`${environment.appUrl}account/login-with-third-party`, model)
       .pipe(
         tap((loggedUser: User) => {
           if (loggedUser) {
