@@ -1,0 +1,16 @@
+.sign-In-Form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-field {
+  width: 50%;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--filled:not(
+    .mdc-text-field--disabled
+  ) {
+  background-color: transparent !important;
+}
