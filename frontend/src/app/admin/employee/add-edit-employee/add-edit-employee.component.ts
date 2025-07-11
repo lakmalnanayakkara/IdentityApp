@@ -72,10 +72,6 @@ export class AddEditEmployeeComponent {
   submit(id: number) {
     this.submitted = true;
     this.errorMessages = [];
-
-    console.log(this.memberForm.valid);
-    console.log(id);
-
     if (this.memberForm.valid && id) {
       this.employeeService.editEmployee(this.memberForm.value).subscribe({
         next: (response: any) => {
@@ -97,8 +93,6 @@ export class AddEditEmployeeComponent {
     } else {
       this.employeeService.addEmployee(this.memberForm.value).subscribe({
         next: (response: any) => {
-          console.log(response);
-
           this.sharedService.showNotification(
             true,
             'Successful',
