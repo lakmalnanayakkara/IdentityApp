@@ -10,5 +10,7 @@ namespace backend.Data
         {
 
         }
+
+        public DbSet<Employee> Employees { get; set; }
     }
 }

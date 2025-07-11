@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Itj9V2EM7p4=",
+  "dgSpecHash": "brND95sRumQ=",
   "success": true,
   "projectFilePath": "D:\\Enhanzer\\practice-project\\backend\\backend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\automapper\\15.0.1\\automapper.15.0.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\google.apis\\1.70.0\\google.apis.1.70.0.nupkg.sha512",

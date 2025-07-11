@@ -1,0 +1,59 @@
+<div class="d-flex my-3 gap-2">
+  <a class="btn btn-outline-primary" routerLink="add-edit-employee"
+    >Add Employee</a
+  >
+  <a class="btn btn-outline-primary" routerLink="/admin">Back</a>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr class="table-warning">
+      <th>Id</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Position</th>
+      <th>Salary</th>
+      <th class="text-center">Edit / Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="employeeList.length === 0">
+      <td colspan="7" class="text-center">No Members</td>
+    </tr>
+
+    <tr *ngFor="let employee of employeeList">
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.firstName }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.position | titlecase }}</td>
+      <td>{{ employee.salary }}</td>
+      <td class="text-center">
+        <button
+          class="btn btn-primary btn-sm me-2"
+          routerLink="add-edit-employee/{{ employee.id }}"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deleteMember(employee.id, template)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Are you sure you want to delete {{ memberToDelete?.userName }}?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">
+      Yes
+    </button>
+    <button type="button" class="btn btn-primary" (click)="decline()">
+      No
+    </button>
+  </div>
+</ng-template>

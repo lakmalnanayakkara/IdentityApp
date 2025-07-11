@@ -2,6 +2,7 @@ using backend;
 using backend.Data;
 using backend.Models;
 using backend.Services;
+using backend.Services.IMPL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -16,6 +17,7 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using backend.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +36,11 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddScoped<JWTService>();
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<ContextSeedService>();
+builder.Services.AddScoped<EmployeeService, EmployeeServiceIMPL>();
+builder.Services.AddAutoMapper(cfg => {
+    cfg.AddProfile<EmployeeMapper>();
+});
+
 
 //defining identity core service
 builder.Services.AddIdentityCore<User>(options =>

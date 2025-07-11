@@ -8,6 +8,7 @@
 
   <ItemGroup>
 	  <!--to authenticate user using JWT bearer-->
+    <PackageReference Include="AutoMapper" Version="15.0.1" />
     <PackageReference Include="Google.Apis.Auth" Version="1.70.0" />
     <PackageReference Include="Mailjet.Api" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.17" />

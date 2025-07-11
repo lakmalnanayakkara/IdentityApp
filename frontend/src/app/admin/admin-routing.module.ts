@@ -13,6 +13,13 @@ const routes: Routes = [
       { path: '', component: AdminComponent },
       { path: 'add-edit-member', component: AddEditMemberComponent },
       { path: 'add-edit-member/:id', component: AddEditMemberComponent },
+      {
+        path: 'employee',
+        loadChildren: () =>
+          import('./employee/employee.module').then(
+            (module) => module.EmployeeModule
+          ),
+      },
     ],
   },
 ];
