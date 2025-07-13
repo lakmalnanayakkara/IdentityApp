@@ -9,11 +9,11 @@ using backend.Data;
 
 #nullable disable
 
-namespace backend.Data.Migrations
+namespace backend.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250711043334_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250713182132_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

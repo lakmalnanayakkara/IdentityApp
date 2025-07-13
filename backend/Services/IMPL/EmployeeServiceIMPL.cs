@@ -53,7 +53,10 @@ namespace backend.Services.IMPL
         public EmployeePaginatedDTO getAllEmployees(int page, int pageSize)
         {
             int total = _dbContext.Employees.Count();
-            List<Employee> employees = _dbContext.Employees.Take(pageSize).ToList();
+            List<Employee> employees = _dbContext.Employees
+    .Skip((page - 1) * pageSize)
+    .Take(pageSize)
+    .ToList();
             List<EmployeeDTO> result = new List<EmployeeDTO>();
             foreach (Employee employee in employees)
             {

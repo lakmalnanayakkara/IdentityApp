@@ -13,6 +13,7 @@ import { SharedService } from '../../util/shared.service';
 export class EmployeeComponent implements OnInit {
   page = 1;
   pageSize = 5;
+  total: number;
   employeeList: EmployeeView[] = [];
   employeeToDelete: EmployeeView | undefined;
   modalRef?: BsModalRef;
@@ -26,6 +27,7 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.getEmployees(this.page, this.pageSize).subscribe({
       next: (response: any) => {
+        this.total = Math.ceil(response.data.count / 5);
         this.employeeList = response.data.employeeDTOs;
       },
     });
@@ -61,5 +63,24 @@ export class EmployeeComponent implements OnInit {
   decline() {
     this.employeeToDelete = undefined;
     this.modalRef?.hide();
+  }
+
+  next() {
+    this.page += 1;
+    this.employeeService.getEmployees(this.page, this.pageSize).subscribe({
+      next: (response: any) => {
+        this.total = Math.ceil(response.data.count / 5);
+        this.employeeList = response.data.employeeDTOs;
+      },
+    });
+  }
+  previous() {
+    this.page -= 1;
+    this.employeeService.getEmployees(this.page, this.pageSize).subscribe({
+      next: (response: any) => {
+        this.total = Math.ceil(response.data.count / 5);
+        this.employeeList = response.data.employeeDTOs;
+      },
+    });
   }
 }
